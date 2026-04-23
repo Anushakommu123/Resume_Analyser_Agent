@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 # Create FastAPI app
 app = FastAPI(
     title=settings.app_name,
-    description="Agentic RAG Test Generator - Three-agent system for generating unit tests",
+    description="Resume Analyser Agent - Multi-agent system for analyzing resumes against job descriptions and generating tuned resumes",
     version="1.0.0"
 )
 
@@ -42,7 +42,7 @@ app.include_router(resume.router)
 async def startup_event():
     """Initialize database connection on startup."""
     logger.info("=" * 60)
-    logger.info("Starting Testing Agents API...")
+    logger.info("Starting Resume Analyser API...")
     logger.info("=" * 60)
     
     # Attempt MongoDB connection
@@ -51,16 +51,13 @@ async def startup_event():
     if connected:
         logger.info("=" * 60)
         logger.info("✓ Application started successfully with MongoDB connection")
-        logger.info("✓ RAG features are ENABLED")
         logger.info("=" * 60)
     else:
         logger.warning("=" * 60)
         logger.warning("⚠ Application started WITHOUT MongoDB connection")
-        logger.warning("⚠ RAG features are DISABLED")
-        logger.warning("⚠ To enable RAG:")
+        logger.warning("⚠ To enable MongoDB:")
         logger.warning("   1. Ensure MongoDB is running")
         logger.warning("   2. Check MONGODB_URI in .env file")
-        logger.warning("   3. Use POST /api/v1/mongodb/reconnect to retry connection")
         logger.warning("=" * 60)
 
 
@@ -78,7 +75,7 @@ async def shutdown_event():
 async def root():
     """Root endpoint."""
     return {
-        "message": "Testing Agents API",
+        "message": "Resume Analyser API",
         "version": "1.0.0",
         "docs": "/docs"
     }

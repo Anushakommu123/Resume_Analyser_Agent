@@ -49,7 +49,11 @@ class Orchestrator:
             try:
                 analysis = await self.analysis_agent.analyze(resume_text, jd_text)
                 tuned_resume = await self.tuning_agent.tune(
-                    resume_text, jd_text, analysis
+                    resume_text,
+                    jd_text,
+                    analysis,
+                    job_id=job_id,
+                    jd_filename=jd_filename,
                 )
                 if "error" in tuned_resume:
                     results.append({

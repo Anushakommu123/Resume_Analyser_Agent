@@ -1,5 +1,5 @@
 """
-Configuration settings for the Testing Agents application.
+Configuration settings for the Resume Analyser application.
 """
 from pydantic_settings import BaseSettings
 from typing import Optional
@@ -10,20 +10,15 @@ class Settings(BaseSettings):
     
     # MongoDB Configuration
     mongodb_uri: str = "mongodb://localhost:27017"
-    database_name: str = "testing_agents"
-    test_cases_collection: str = "test_cases"
+    database_name: str = "resume_analyser"
     
     # OpenAI Configuration
     openai_api_key: Optional[str] = None
     embedding_model: str = "text-embedding-3-small"
     llm_model: str = "gpt-4-turbo-preview"
     
-    # Vector Search Configuration
-    vector_dimension: int = 1536  # OpenAI text-embedding-3-small dimension
-    top_k_results: int = 5  # Number of similar test cases to retrieve
-    
     # Application Configuration
-    app_name: str = "Testing Agents API"
+    app_name: str = "Resume Analyser API"
     debug: bool = False
     port: int = 8000
     
