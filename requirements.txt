@@ -11,4 +11,7 @@ pytest-asyncio==0.21.1
 numpy>=1.26.0
 sentence-transformers==2.2.2
 httpx==0.25.2
-
+langchain-openai>=0.0.5
+langchain-core>=0.1.0
+pypdf>=4.0.0
+python-docx>=1.1.0
